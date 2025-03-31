@@ -12,8 +12,8 @@
         const number = params.get('number');
 
         if (id && number) {
-            // Redirige vers news.php en conservant les paramètres
-            window.location.href = `https://www.invader-spotter.art/news.php?id=${id}&number=${number}`;
+            // Ajoute un marqueur pour exécuter lienm après la redirection
+            window.location.href = `https://www.invader-spotter.art/news.php?id=${id}&number=${number}&executeLienm=true`;
         } else {
             console.error("ID ou number manquant dans l'URL");
         }
