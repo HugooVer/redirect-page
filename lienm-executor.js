@@ -6,19 +6,17 @@
         const id = params.get('id');
         const number = params.get('number');
 
-        // Vérifier si lienm existe
         if (typeof lienm === 'function') {
             console.log("Exécution de lienm avec id :", id, "et number :", number);
-            lienm(id, number);  // Exécution de la fonction lienm
+            lienm(id, number);
         } else {
             console.log("Attente de lienm...");
-            setTimeout(tryExecuteLienm, 500); // Réessaye toutes les 500ms
+            setTimeout(tryExecuteLienm, 1000); // Attente de 1 seconde avant le prochain essai
         }
     }
 
-    // On s'assure que le script s'exécute après le chargement complet de la page
     window.addEventListener('load', function() {
         console.log("Page complètement chargée, exécution du script.");
-        tryExecuteLienm();  // Essaye d'exécuter lienm
+        setTimeout(tryExecuteLienm, 2000); // Attente de 2 secondes avant d'essayer d'exécuter lienm
     });
 })();
