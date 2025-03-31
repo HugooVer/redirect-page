@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirection</title>
+</head>
+<body>
+    <script>
+        function redirectToPage(id, number) {
+            // Remplacez l'URL par celle de votre site
+            window.location.href = `https://www.invader-spotter.art/listing.php`;
+            // Exécutez le script nécessaire pour accéder à la page spécifique
+            setTimeout(function() {
+                lienm(id, number);
+            }, 1000); // Attendre que la page soit chargée
+        }
+
+        // Exemple d'appel de la fonction avec des paramètres
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const number = params.get('number');
+        if (id && number) {
+            redirectToPage(id, number);
+        }
+    </script>
+</body>
+</html>
