@@ -7,27 +7,22 @@
 <body>
     <script>
         function redirectToPage(id, number) {
-            // Rediriger vers la page de listing
             window.location.href = 'https://www.invader-spotter.art/news.php';
-
-            // Attendre que la page soit chargée pour exécuter la fonction
-            setTimeout(function() {
-                // Exécuter la fonction JavaScript sur la page de destination
+    
+            window.addEventListener('load', function() {
+                console.log("Page chargée, exécution de lienm");
                 lienm(id, number);
-            }, 3000); // Ajustez le délai si nécessaire
+            });
         }
-
-        // Récupérer les paramètres de l'URL
+    
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
         const number = params.get('number');
-
-        // Vérifier que les paramètres sont présents et appeler la fonction
+    
         if (id && number) {
-            console.log(id, number);
             redirectToPage(id, number);
         } else {
-            console.error("ID or number is missing");
+            console.error("ID ou number manquant dans l'URL");
         }
     </script>
 </body>
