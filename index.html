@@ -7,25 +7,27 @@
 <body>
     <script>
         function redirectToPage(id, number) {
-            console.log("ID:", id, "Number:", number); // Vérifiez les valeurs dans la console
-            window.location.href = `https://www.invader-spotter.art/listing.php`;
+            // Rediriger vers la page de listing
+            window.location.href = 'https://www.invader-spotter.art/listing.php';
+
+            // Attendre que la page soit chargée pour exécuter la fonction
             setTimeout(function() {
-                console.log("Executing lienm function");
+                // Exécuter la fonction JavaScript sur la page de destination
                 lienm(id, number);
-            }, 1000); // Augmentez le délai si nécessaire
+            }, 1000); // Ajustez le délai si nécessaire
         }
-    
-        console.error("Test ok");
+
+        // Récupérer les paramètres de l'URL
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
         const number = params.get('number');
+
+        // Vérifier que les paramètres sont présents et appeler la fonction
         if (id && number) {
-            // redirectToPage(id, number);
-            console.error("Test ok");
+            redirectToPage(id, number);
         } else {
             console.error("ID or number is missing");
         }
     </script>
-    
 </body>
 </html>
