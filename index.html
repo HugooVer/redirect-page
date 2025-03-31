@@ -8,13 +8,14 @@
     <script>
         function redirectToPage(id, number) {
             console.log("ID:", id, "Number:", number); // Vérifiez les valeurs dans la console
-            window.location.href = `https://www.invader-spotter.art/listingtest.php`;
+            window.location.href = `https://www.invader-spotter.art/listing.php`;
             setTimeout(function() {
                 console.log("Executing lienm function");
                 lienm(id, number);
             }, 1000); // Augmentez le délai si nécessaire
         }
     
+        console.error("Test ok");
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
         const number = params.get('number');
