@@ -10,27 +10,27 @@
     <p>Si vous n'êtes pas redirigé automatiquement, <a id="manualLink" href="#">cliquez ici</a>.</p>
 
     <script>
-        // Injecter un script externe pour exécuter lienm après la redirection
+        // Injecter un script local pour tester l'exécution de lienm
         setTimeout(() => {
             const script = document.createElement('script');
-            script.src = 'https://ton-site.com/lienm-executor.js'; // Remplace par l'URL correcte
-            script.onload = function() {
-                console.log("Script externe chargé avec succès.");
-            };
-            script.onerror = function() {
-                console.error("Erreur lors du chargement du script externe.");
-            };
+            script.innerHTML = `
+                (function() {
+                    console.log("Vérification de l'exécution de lienm");
+    
+                    const params = new URLSearchParams(window.location.search);
+                    const id = params.get('id');
+                    const number = params.get('number');
+    
+                    if (typeof lienm === 'function') {
+                        console.log("Exécution de lienm avec id :", id, "et number :", number);
+                        lienm(id, number);  // Exécuter la fonction lienm
+                    } else {
+                        console.log("Erreur : lienm n'est pas défini.");
+                    }
+                })();
+            `;
             document.body.appendChild(script);
-        }, 3000);
-    </script>
-
-    <script>
-        // Injecter un script externe pour exécuter lienm après la redirection
-        setTimeout(() => {
-            const script = document.createElement('script');
-            script.src = 'https://ton-site.com/lienm-executor.js'; // Remplace par l'URL où tu héberges ton script
-            document.body.appendChild(script);
-        }, 3000);
+        }, 3000); // 3 secondes après la redirection
     </script>
 </body>
 </html>
