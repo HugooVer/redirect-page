@@ -10,25 +10,18 @@
     <p>Si vous n'êtes pas redirigé automatiquement, <a id="manualLink" href="#">cliquez ici</a>.</p>
 
     <script>
-        // Récupération des paramètres de l'URL
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
-        const number = params.get('number');
-
-        if (id && number) {
-            // Construire l'URL de destination avec les paramètres
-            const destinationUrl = `https://www.invader-spotter.art/news.php?id=${id}&number=${number}&executeLienm=true`;
-            
-            // Mettre à jour le lien manuel
-            document.getElementById('manualLink').href = destinationUrl;
-
-            // Rediriger après une courte attente
-            setTimeout(() => {
-                window.location.href = destinationUrl;
-            }, 1500);
-        } else {
-            document.body.innerHTML = "<h1>Erreur : paramètres manquants.</h1><p>Veuillez vérifier votre lien.</p>";
-        }
+        // Injecter un script externe pour exécuter lienm après la redirection
+        setTimeout(() => {
+            const script = document.createElement('script');
+            script.src = 'https://ton-site.com/lienm-executor.js'; // Remplace par l'URL correcte
+            script.onload = function() {
+                console.log("Script externe chargé avec succès.");
+            };
+            script.onerror = function() {
+                console.error("Erreur lors du chargement du script externe.");
+            };
+            document.body.appendChild(script);
+        }, 3000);
     </script>
 
     <script>
